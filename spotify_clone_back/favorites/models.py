@@ -12,3 +12,6 @@ class Favorite(models.Model):
         on_delete=models.CASCADE,
         related_name='podcasts'
     )
+
+    def __str__(self):
+        return f"Fav user {self.user.username} {self.id}"

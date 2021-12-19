@@ -21,4 +21,5 @@ urlpatterns = [
     # includes URL's
     path('', include('users.urls')),
     path('', include('podcasts.urls')),
+    path('', include('favorites.urls')),
 ]
