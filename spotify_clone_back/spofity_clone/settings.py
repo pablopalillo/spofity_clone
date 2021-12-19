@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'users.apps.UsersConfig',
-    'podcasts.apps.PodcastsConfig'
+    'podcasts.apps.PodcastsConfig',
+    'favorites.apps.FavoritesConfig'
 ]
 
 REST_FRAMEWORK = {

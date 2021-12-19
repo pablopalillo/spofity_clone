@@ -1,3 +1,9 @@
 from django.contrib import admin
+from .models import Favorite
 
-# Register your models here.
+
+class FavoriteAdmin(admin.ModelAdmin):
+    readonly_fields = ('id',)
+
+
+admin.site.register(Favorite, FavoriteAdmin)

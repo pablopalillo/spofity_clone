@@ -1,3 +1,14 @@
 from django.db import models
+from podcasts.models import Podcast
+from django.contrib.auth.models import User
 
-# Create your models here.
+
+class Favorite(models.Model):
+
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    podcast = models.ForeignKey(
+        Podcast,
+        on_delete=models.CASCADE,
+        related_name='podcasts'
+    )
