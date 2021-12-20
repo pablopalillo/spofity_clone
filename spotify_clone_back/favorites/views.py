@@ -8,7 +8,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.response import Response
 
 from .models import Favorite
-from .serializers import FavoriteSerializer
+from .serializers import FavoriteSerializer, FavoriteSaveSerializer
 
 
 class FavoritesView(viewsets.ViewSet):
@@ -26,3 +26,11 @@ class FavoritesView(viewsets.ViewSet):
 
         except ObjectDoesNotExist:
             raise Http404
+
+    def create(self, request):
+
+        favorite_serializer = FavoriteSaveSerializer(data=request.data)
+        if favorite_serializer.is_valid(raise_exception=True):
+            favorite_serializer.save()
+            return Response(status.HTTP_201_CREATED)
+        return Response(status.HTTP_400_BAD_REQUEST)
