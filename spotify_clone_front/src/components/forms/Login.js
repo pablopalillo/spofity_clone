@@ -1,16 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout, Space, Divider, Row, Col } from 'antd';
 import { Form, Input, Button } from 'antd';
 
 import './form.css';
-const { Header,  Content } = Layout;
+import './buttons.css';
+import  UserApi from '../../api/users';
+const { Content } = Layout;
 
 
-class Login extends React.Component {
-    render() {
-        return (
+const Login = () => {
+
+    const [form] = Form.useForm();
+    const [userName, setUserName] = useState(null);
+    const [password, setPassword] = useState(null);
+
+    function handleUsernameChange(e) {
+        setUserName(e.target.value)
+    }
+
+    function handlePasswordChange(e) {
+        setPassword(e.target.value)
+    }
+
+    function handleSubmit() {
+        if(userName && password) {
+
+            const login = new UserApi();
+
+            login.loginUser(userName, password).then(res => {
+                const token = res.data.token;
+                login.persistUserData(token);
+            }).catch(error => {
+                console.error(error);
+
+                if(error.response.status === 400) {
+                    alert("username or password are incorrect")
+                }
+            })
+        }
+    }
+
+    return (
         <React.StrictMode>
-
             <Layout className="layout">
                 <Row>
                     <Col span={12} offset={6} className='form-center'>
@@ -22,33 +53,44 @@ class Login extends React.Component {
                         <Content>
                             <h3>Para continuar, inicia sesión en Spotify.</h3>
 
-                            <Form layout="vertical">
+                            <Form 
+                             className="spotify-form"
+                             layout="vertical"
+                             form={form}
+                            >
                             <Form.Item label="Nombre de usuario" required>
-                                <Input placeholder="Nombre de Usuario" />
+                                <Input placeholder="Nombre de Usuario"
+                                       value={userName}
+                                       onChange={handleUsernameChange}
+                                />
                             </Form.Item>
                             <Form.Item
+                                lay
                                 label="Contraseña"
                                 required
                             >
-                                <Input placeholder="Contraseña" />
+                                <Input type="password"
+                                    value={password}
+                                    onChange={handlePasswordChange}
+                                    placeholder="Contraseña" />
                             </Form.Item>
                             <Form.Item>
-                                <Button type="primary">Submit</Button>
+                                <Button 
+                                    className="spotify-btn primary"
+                                    onClick={handleSubmit}>Iniciar sesión</Button>
                             </Form.Item>
                             </Form>
 
                             <Divider />
                             <h3>¿No tienes cuenta?</h3>
-                            <Button>Regístrate en Spotify</Button>
+                            <Button className="spotify-btn secondary">Regístrate en Spotify</Button>
                         </Content>
                     </Col>
                 </Row>
-
             </Layout>
-    
+
         </React.StrictMode>
-        );
-    }
+    );   
 }
 
 export default Login;

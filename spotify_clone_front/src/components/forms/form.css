@@ -6,3 +6,13 @@ label {
     font-weight: 700;
     font-size: 16px;
 } 
+
+.spofity-form {
+    padding: 0 4rem;
+}
+
+.spotify-form .ant-input {
+    height: 40px;
+    padding: 6px 12px;
+}
+

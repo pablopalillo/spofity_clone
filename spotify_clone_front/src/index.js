@@ -1,13 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import Login from './components/forms/Login';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-
-const { Header, Content } = Layout;
 
 ReactDOM.render(
   <React.StrictMode>
