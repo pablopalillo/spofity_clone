@@ -19,7 +19,6 @@ class FavoritesView(viewsets.ViewSet):
     def retrieve(self, request, pk):
 
         try:
-
             queryset = Favorite.objects.filter(user__id=pk)
             serializer = FavoriteSerializer(queryset, many=True)
             return Response(serializer.data)
@@ -34,3 +33,15 @@ class FavoritesView(viewsets.ViewSet):
             favorite_serializer.save()
             return Response(status.HTTP_201_CREATED)
         return Response(status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+
+        try:
+            favorite_user = Favorite.objects.filter(id=pk).first()
+            favorite_user.delete()
+
+            return  Response(status.HTTP_200_OK)
+
+        except ObjectDoesNotExist:
+            raise Http404
+

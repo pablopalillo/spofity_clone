@@ -12,5 +12,10 @@ urlpatterns = [
       'api/favorite',
       views.FavoritesView.as_view({'post': 'create'}),
       name="Create Favorite"
+   ),
+   path(
+      'api/favorite/<int:pk>',
+      views.FavoritesView.as_view({'delete': 'delete'}),
+      name="Create Favorite"
    )
 ]
