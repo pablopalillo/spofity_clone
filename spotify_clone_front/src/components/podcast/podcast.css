@@ -29,3 +29,78 @@ h2, h3 {
     line-height: 28px;
     text-transform: none;
 }
+
+.podcast-card {
+    background-color: #181818;
+    border:none;
+    color: #fff;
+}
+
+.podcast-card:hover {
+    background: #282828;
+}
+
+.podcast-card .podcast-title {
+    overflow: hidden;
+    max-height: 26px;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 5px;
+    color: #fff;
+}
+
+.podcast-card .podcast-description {
+    height: 44px;
+    max-height: 44px ;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.podcast-card p {
+    cursor: pointer;
+}
+
+.podcast-img img {
+    width: 100%;
+}
+
+.podcast-card .podcast-action {
+    height: 207px;
+    position: relative;
+}
+
+.podcast-action .podcast-img {
+    position: absolute;
+    z-index: 1;
+}
+
+.podcast-card .podcast-button {
+    position: absolute;
+    right: 10px;
+    bottom: 15px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    padding-top: 4px;
+    background-color: #1db954;
+    color: #fff;
+    border-radius: 800px;
+    box-shadow: 0 8px 8px rgb(0 0 0 / 30%);
+    pointer-events: none;
+    transform: translateY(8px);
+    transition: all .3s ease;
+    z-index: 10;
+}
+
+.podcast-button  .podcast-button-icon {
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+}
+
+
+
+
