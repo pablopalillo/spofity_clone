@@ -34,5 +34,15 @@ class UserApi {
             localStorage.setItem('user', data);
         }
     }
+
+    getUserToken() {
+        var token = null;
+
+        if(localStorage.getItem("token")) {
+            token = localStorage.getItem("token");
+        }
+
+        return token;
+    }
 }
 export default UserApi;
