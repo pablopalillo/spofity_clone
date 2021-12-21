@@ -30,6 +30,15 @@ const Login = () => {
             login.loginUser(userName, password).then(res => {
                 const token = res.data.token;
                 login.persistUserData(token);
+
+                login.loggedUserData(token).then(res => {
+                    login.persistUserData(null, res.data);
+                    window.location.reload();
+                }).catch(error => {
+                    console.error(error);
+                })
+                
+
             }).catch(error => {
                 console.error(error);
 
@@ -37,6 +46,7 @@ const Login = () => {
                     alert("username or password are incorrect")
                 }
             })
+
         }
     }
 

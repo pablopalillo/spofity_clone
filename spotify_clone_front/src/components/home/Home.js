@@ -17,7 +17,7 @@ const Home = () => {
 
             {userToken ? (
                 <Podcast/>
-            ) : <Login/> }
+            ) : <Login /> }
 
         </React.StrictMode>
     )

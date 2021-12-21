@@ -45,3 +45,18 @@ class LogoutView(APIView):
             return Response(status=status.HTTP_200_OK)
         except ObjectDoesNotExist:
             raise Http404
+
+
+class LoggedUserView(APIView):
+
+    """ User data information.    """
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get(self, request):
+
+        try:
+            user_serializer = UserSerializer(request.user).data
+            return Response(user_serializer, status=status.HTTP_200_OK)
+        except ObjectDoesNotExist:
+            raise Http404
