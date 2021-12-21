@@ -10,6 +10,8 @@ import {
 import "./podcast.css";
 
 import PodcastList from './PodcastList';
+import FavoriteList from './FavoriteList';
+
 import  UserApi from '../../api/users';
 import  PodcastApi from '../../api/podcast';
 
@@ -18,23 +20,46 @@ const { Content, Sider } = Layout;
 const Podcast = () => {
 
     const [podcastList, setPodcastList] = useState(null);
+    const [sectionTitle, setSectionType] = useState("Podcast");
+    // to valid type of list and render Podcast or Favorite
+    const [podcastType, setPodcastType] = useState("podcast");
 
     useEffect(() => { 
-
+ 
         if(!podcastList) {
             const user = new UserApi();
             const userToken = user.getUserToken();
 
             const podcastApi = new PodcastApi();
 
-            podcastApi.podcastsList(userToken).then(res => {
-                setPodcastList(res.data);
-            }).catch(error => {
-                console.error(error);
-            })
+            if(podcastType==="podcast") {
+                podcastApi.podcastsList(userToken).then(res => {
+                    setPodcastList(res.data);
+                }).catch(error => {
+                    console.error(error);
+                })
+            } else {
+                podcastApi.favoriteList(userToken).then(res => {
+                    const responseFavList = res.data;
+                    setPodcastList(responseFavList);
+                }).catch(error => {
+                    console.error(error);
+                })
+            }
+
         }
 
-    }, [])
+    }, [handleFavClick])
+
+    /**
+     * Change the list status and refresh with the fav list.
+     */
+
+    async function handleFavClick() {
+        setPodcastList(null);
+        setPodcastType("favorite");
+        setSectionType("Favorite Playlist");
+    }
 
     return(
         <React.StrictMode>
@@ -47,7 +72,7 @@ const Podcast = () => {
                     <Menu.Item key="1" icon={<AudioOutlined />}>
                         Podcast
                     </Menu.Item>
-                    <Menu.Item key="2" icon={<StarOutlined />}>
+                    <Menu.Item key="2" icon={<StarOutlined />} onClick={handleFavClick}>
                         Favorites
                     </Menu.Item>
                     <Menu.Item key="3" icon={<LogoutOutlined />}>
@@ -59,12 +84,17 @@ const Podcast = () => {
                 <Content style={{ margin: '3rem 16px' }}>
                     <div className="site-layout-background" style={{ padding: 24, minHeight: 360 }}>
                         <Row>
-                            <h2>Podcast</h2>
+                            <h2>{sectionTitle}</h2>
                         </Row>
 
                         <Row className='podcast-list'>
                             <Col span={24}>
-                                <PodcastList podcasts={ podcastList } ></PodcastList>
+                                {
+                                podcastType==="podcast" ? (
+                                    <PodcastList podcasts={ podcastList } />
+                                ) : <FavoriteList podcasts={ podcastList } />
+                                }
+                                
                             </Col>
                         </Row>
 

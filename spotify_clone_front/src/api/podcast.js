@@ -14,5 +14,16 @@ class PodcastApi {
            }
         );
     }
+
+    async favoriteList(token) {
+        return await axios.get(
+            `${process.env.REACT_APP_DOMAIN}/api/favorites/4`,
+            {
+               headers: {
+                 'Authorization': `Token ${token}`
+               },
+           }
+        );
+    }
 }
 export default PodcastApi;

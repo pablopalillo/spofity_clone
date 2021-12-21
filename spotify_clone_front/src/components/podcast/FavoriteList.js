@@ -1,11 +1,7 @@
 import React from 'react';
 import { List, Card } from 'antd';
-import Icon from '@ant-design/icons';
-import {
-    StarOutlined,
-  } from '@ant-design/icons';
 
-class PodcastList extends React.Component {
+class FavoriteList extends React.Component {
 
     render() {
         const podcasts = this.props.podcasts;
@@ -21,15 +17,11 @@ class PodcastList extends React.Component {
                                 <Card className='podcast-card'>
                                     <div className='podcast-action'>
                                         <div className='podcast-img'>
-                                            <img src={item.image} alt="podcast img" />
-                                        </div>
-
-                                        <div className='podcast-button'>
-                                            <Icon component={StarOutlined} className='podcast-button-icon' />
+                                            <img src={process.env.REACT_APP_DOMAIN+item.podcast.image} alt="podcast img" />
                                         </div>
                                     </div>
-                                    <p className='podcast-title'><strong>{item.name}</strong></p>
-                                    <p className='podcast-description'>{item.description}</p>
+                                    <p className='podcast-title'><strong>{item.podcast.name}</strong></p>
+                                    <p className='podcast-description'>{item.podcast.description}</p>
                                 </Card>
                             </List.Item>
                         )}
@@ -41,4 +33,4 @@ class PodcastList extends React.Component {
 
 }
 
-export default PodcastList;
+export default FavoriteList;
