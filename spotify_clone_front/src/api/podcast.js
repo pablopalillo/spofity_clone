@@ -27,21 +27,19 @@ class PodcastApi {
         );
     }
 
-    async saveFavoritePodcast(token, podcastId) {
+    saveFavoritePodcast(token, podcastId) {
         const userId = this.getIdUser();
         const data = {
             "podcast": podcastId,
             "user": userId
         }
 
-        return await axios.post(
-                `${process.env.REACT_APP_DOMAIN}/api/favorite`,
-                {
-                    headers: {
-                        'Authorization': `Token ${token}`
-                    },
-                }, data
-        )
+        return axios.post(
+            `${process.env.REACT_APP_DOMAIN}/api/favorite`, data, {
+                headers: {
+                  'Authorization': `Token ${token}`
+                }
+            });
     }
 
     getIdUser() {

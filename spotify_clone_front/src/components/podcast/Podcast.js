@@ -70,6 +70,11 @@ const Podcast = () => {
         setSectionType("Podcast");
     }
 
+    function handleLogout() {
+        const user = new UserApi();
+        user.logoutUser();
+    }
+
     return(
         <React.StrictMode>
             <Layout className="layout">
@@ -84,7 +89,7 @@ const Podcast = () => {
                     <Menu.Item key="2" icon={<StarOutlined />} onClick={handleFavClick}>
                         Favorites
                     </Menu.Item>
-                    <Menu.Item key="3" icon={<LogoutOutlined />}>
+                    <Menu.Item key="3" icon={<LogoutOutlined />} onClick={handleLogout}>
                         Logout
                     </Menu.Item>
                 </Menu>

@@ -1,3 +1,4 @@
+import { WindowsFilled } from '@ant-design/icons/lib/icons';
 import axios from 'axios';
 
 
@@ -55,6 +56,11 @@ class UserApi {
         }
 
         return token;
+    }
+
+    logoutUser(){
+        localStorage.clear();
+        window.location.reload();
     }
 }
 export default UserApi;
