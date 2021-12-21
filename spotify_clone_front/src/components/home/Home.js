@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Login from '../../components/forms/Login';
-import Register from '../../components/forms/Register'; 
+import Podcast from '../../components/podcast/Podcast';
 import UserApi from '../../api/users';
 
 
@@ -16,7 +16,7 @@ const Home = () => {
         <React.StrictMode>
 
             {userToken ? (
-                <Register/>
+                <Podcast/>
             ) : <Login/> }
 
         </React.StrictMode>

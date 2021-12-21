@@ -1,0 +1,31 @@
+body, .ant-layout.site-layout, .ant-layout-sider, .ant-menu.ant-menu-dark, .ant-layout-sider-trigger {
+    background-color: #101010;
+    color: #fff;
+}
+
+.logo {
+    padding: 10px 22px;
+}
+
+
+.logo svg{
+    color: #fff;
+    width: 130px;
+    height: 40px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: 28px;
+    text-transform: none;
+}
+
+h2, h3 {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: -.04em;
+    line-height: 28px;
+    text-transform: none;
+}
