@@ -13,6 +13,17 @@ class UserApi {
         );
     }
 
+    registerUser(username, email, password) {
+        return axios.post(
+            `${process.env.REACT_APP_DOMAIN}/api/user`,
+            {
+                "username": username,
+                "email": email,
+                "password": password
+            }
+        );
+    }
+
     persistUserData(token=null, data=null) {
         const loggedToken = localStorage.getItem("token")
         if(!loggedToken && token) {

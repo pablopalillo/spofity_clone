@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom';
 
 import 'antd/dist/antd.css';
 import Login from './components/forms/Login';
+import Register from './components/forms/Register';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
 
-    <Login />
+    <Register />
   
   </React.StrictMode>,
   document.getElementById('root')
