@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Space, Divider, Row, Col } from 'antd';
 import { Form, Input, Button } from 'antd';
+import { Link } from "react-router-dom";
 
 import './form.css';
 import './buttons.css';
@@ -93,7 +94,12 @@ const Login = () => {
 
                             <Divider />
                             <h3>¿No tienes cuenta?</h3>
-                            <Button className="spotify-btn secondary">Regístrate en Spotify</Button>
+                            <Link 
+                                className="spotify-btn secondary"
+                                to={`/register`}
+                                >
+                                    Regístrate en Spotify
+                            </Link>
                         </Content>
                     </Col>
                 </Row>

@@ -1,15 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from "react-router-dom";
+
 import 'antd/dist/antd.css';
 import Home from './components/home/Home';
+import Register from './components/forms/Register';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-
-    <Home />
+    <Router>
+      <Routes>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/register" element={<Register/>}/>
+      </Routes>
+    </Router>
   
   </React.StrictMode>,
   document.getElementById('root')
