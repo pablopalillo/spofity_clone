@@ -87,7 +87,7 @@ Guarda un usuario nuevo en el sistema.
 ```
 {
 "username": "pablopalillo",
-"email": "sizas@sizas.com",
+"email": "pablo@hotmail.com",
 "password": "melosito"
 }
 ```
